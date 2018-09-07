@@ -12,5 +12,8 @@ setup(
     author_email='keith@linuxacademy.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    install_requires=[]
+    install_requires=['boto3'],
+    entry_points={
+        'console_scripts': ['pgbackup=pgbackup.cli:main']
+        }
 )

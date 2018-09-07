@@ -22,3 +22,17 @@ def test_dump_handles_oserror(mocker):
 		pgdump.dump(url)
 
 
+def test_dump_file_name_without_timestamp():
+	"""
+	pgdump.db_file_name returns the name of the database
+	"""
+	assert pgdump.dump_file_name(url) == "db_one.sql"
+
+def test_dump_file_name_with_timestamp():
+	"""
+	pgdump.db_file_name returns the name of the database with timestamp
+	"""
+	timestamp = "2018-09-07T20:00:00"
+	assert pgdump.dump_file_name(url, timestamp) == f"db_one-{timestamp}.sql"
+
+
